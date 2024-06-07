@@ -113,7 +113,7 @@ class CarState(CarStateBase):
     self.lkas_disabled = cp_cam.vl["CAM_LANEINFO"]["LANE_LINES"] == 0
     self.cam_lkas = cp_cam.vl["CAM_LKAS"]
     self.cam_laneinfo = cp_cam.vl["CAM_LANEINFO"]
-    ret.steerError = cp_cam.vl["CAM_LKAS"]["ERR_BIT_1"] == 1
+    ret.steerError = False
 
     return ret
 
