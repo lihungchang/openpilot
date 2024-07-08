@@ -106,7 +106,7 @@ DevicePanel::DevicePanel(SettingsWindow *parent) : ListWidget(parent) {
   // offroad-only buttons
 
   auto dcamBtn = new ButtonControl("駕駛員監控鏡頭", "預覽",
-                                   "Preview the driver facing camera to help optimize device mounting position for best driver monitoring experience. (vehicle must be off)");
+                                   "預覽駕駛員監控鏡頭，以幫助優化設備安裝位置並獲得最佳駕駛員監控體驗。 （車輛必須熄火）");
   connect(dcamBtn, &ButtonControl::clicked, [=]() { emit showDriverView(); });
   addItem(dcamBtn);
 
@@ -120,7 +120,7 @@ DevicePanel::DevicePanel(SettingsWindow *parent) : ListWidget(parent) {
   addItem(resetCalibBtn);
 
   if (!params.getBool("Passive")) {
-    auto retrainingBtn = new ButtonControl("重新啟動訓練流程", "重啟", "Review the rules, features, and limitations of openpilot");
+    auto retrainingBtn = new ButtonControl("重新啟動訓練流程", "重啟", "查看 openpilot 的規則、功能和限制");
     connect(retrainingBtn, &ButtonControl::clicked, [=]() {
       if (ConfirmationDialog::confirm("你確定重新啟動訓練流程嗎?", this)) {
         emit reviewTrainingGuide();
