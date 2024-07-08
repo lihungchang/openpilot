@@ -120,7 +120,7 @@ DevicePanel::DevicePanel(SettingsWindow *parent) : ListWidget(parent) {
   addItem(resetCalibBtn);
 
   if (!params.getBool("Passive")) {
-    auto retrainingBtn = new ButtonControl("重新啟動訓練流程", "重啟", "查看 openpilot 的規則、功能和限制");
+    auto retrainingBtn = new ButtonControl("重新啟動訓練流程", "重啟", "重新觀看openpilot的規則、功能和限制");
     connect(retrainingBtn, &ButtonControl::clicked, [=]() {
       if (ConfirmationDialog::confirm("你確定重新啟動訓練流程嗎?", this)) {
         emit reviewTrainingGuide();
@@ -230,8 +230,8 @@ SoftwarePanel::SoftwarePanel(QWidget* parent) : ListWidget(parent) {
   updateBtn = new ButtonControl("檢查更新", "");
   connect(updateBtn, &ButtonControl::clicked, [=]() {
     if (params.getBool("IsOffroad")) {
-      fs_watch->Path(QString::fromStdString(params.getParamPath("LastUpdateTime")));
-      fs_watch->Path(QString::fromStdString(params.getParamPath("UpdateFailedCount")));
+      fs_watch->addPath(QString::fromStdString(params.getParamPath("LastUpdateTime")));
+      fs_watch->addPath(QString::fromStdString(params.getParamPath("UpdateFailedCount")));
       updateBtn->setText("檢查中");
       updateBtn->setEnabled(false);
     }
