@@ -300,18 +300,18 @@ C2NetworkPanel::C2NetworkPanel(QWidget *parent) : QWidget(parent) {
   QObject::connect(tetheringBtn, &ButtonControl::clicked, [=]() { HardwareEon::launch_tethering(); });
   list->addItem(tetheringBtn);
 #endif
-  ipress = new LabelControl("IP位址", "");
-  list->addItem(ipress);
+  ipaddress = new LabelControl("IP Address", "");
+  list->addItem(ipaddress);
 
   // SSH key management
   list->addItem(new SshToggle());
   list->addItem(new SshControl());
   layout->addWidget(list);
-  layout->addtretch(1);
+  layout->addStretch(1);
 }
 
 void C2NetworkPanel::showEvent(QShowEvent *event) {
-  ipress->setText(getIPAddress());
+  ipaddress->setText(getIPAddress());
 }
 
 QString C2NetworkPanel::getIPAddress() {
