@@ -249,7 +249,7 @@ SoftwarePanel::SoftwarePanel(QWidget* parent) : ListWidget(parent) {
 
   QWidget *widgets[] = {versionLbl, lastUpdateLbl, updateBtn, gitBranchLbl, gitCommitLbl, osVersionLbl, uninstallBtn};
   for (QWidget* w : widgets) {
-    Item(w);
+    addItem(w);
   }
 
   fs_watch = new QFileSystemWatcher(this);
@@ -294,24 +294,24 @@ C2NetworkPanel::C2NetworkPanel(QWidget *parent) : QWidget(parent) {
 #ifdef QCOM
   auto wifiBtn = new ButtonControl("Wi-Fi設定", "開啟");
   QObject::connect(wifiBtn, &ButtonControl::clicked, [=]() { HardwareEon::launch_wifi(); });
-  list->Item(wifiBtn);
+  list->addItem(wifiBtn);
 
   auto tetheringBtn = new ButtonControl("網路分享設定", "開啟");
   QObject::connect(tetheringBtn, &ButtonControl::clicked, [=]() { HardwareEon::launch_tethering(); });
-  list->Item(tetheringBtn);
+  list->addItem(tetheringBtn);
 #endif
   ipress = new LabelControl("IP位址", "");
-  list->Item(ipress);
+  list->addItem(ipress);
 
   // SSH key management
-  list->Item(new SshToggle());
-  list->Item(new SshControl());
-  layout->Widget(list);
-  layout->Stretch(1);
+  list->addItem(new SshToggle());
+  list->addItem(new SshControl());
+  layout->addWidget(list);
+  layout->addtretch(1);
 }
 
 void C2NetworkPanel::showEvent(QShowEvent *event) {
-  ipress->setText(getIPress());
+  ipress->setText(getIPAddress());
 }
 
 QString C2NetworkPanel::getIPAddress() {
