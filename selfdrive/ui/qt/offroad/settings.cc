@@ -226,7 +226,7 @@ SoftwarePanel::SoftwarePanel(QWidget* parent) : ListWidget(parent) {
   gitCommitLbl = new LabelControl("Git Commit");
   osVersionLbl = new LabelControl("作業系統版本");
   versionLbl = new LabelControl("OpenPilot版本", "", QString::fromStdString(params.get("ReleaseNotes")).trimmed());
-  lastUpdateLbl = new LabelControl("最後檢查更新時間", "", "The last time openpilot successfully checked for an update. The updater only runs while the car is off.");
+  lastUpdateLbl = new LabelControl("最後檢查更新時間", "", "openpilot 上次成功檢查更新的時間。更新程式僅在汽車熄火時運行。");
   updateBtn = new ButtonControl("Check for Update", "");
   connect(updateBtn, &ButtonControl::clicked, [=]() {
     if (params.getBool("IsOffroad")) {
