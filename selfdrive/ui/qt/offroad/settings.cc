@@ -224,22 +224,22 @@ void DevicePanel::poweroff() {
 SoftwarePanel::SoftwarePanel(QWidget* parent) : ListWidget(parent) {
   gitBranchLbl = new LabelControl("Git Branch");
   gitCommitLbl = new LabelControl("Git Commit");
-  osVersionLbl = new LabelControl("OS Version");
-  versionLbl = new LabelControl("Version", "", QString::fromStdString(params.get("ReleaseNotes")).trimmed());
-  lastUpdateLbl = new LabelControl("Last Update Check", "", "The last time openpilot successfully checked for an update. The updater only runs while the car is off.");
-  updateBtn = new ButtonControl("Check for Update", "");
+  osVersionLbl = new LabelControl("作業系統版本");
+  versionLbl = new LabelControl("OpenPilot版本", "", QString::fromStdString(params.get("ReleaseNotes")).trimmed());
+  lastUpdateLbl = new LabelControl("最後檢查更新時間", "", "The last time openpilot successfully checked for an update. The updater only runs while the car is off.");
+  updateBtn = new ButtonControl("檢查更新", "");
   connect(updateBtn, &ButtonControl::clicked, [=]() {
     if (params.getBool("IsOffroad")) {
-      fs_watch->addPath(QString::fromStdString(params.getParamPath("LastUpdateTime")));
-      fs_watch->addPath(QString::fromStdString(params.getParamPath("UpdateFailedCount")));
-      updateBtn->setText("CHECKING");
+      fs_watch->Path(QString::fromStdString(params.getParamPath("LastUpdateTime")));
+      fs_watch->Path(QString::fromStdString(params.getParamPath("UpdateFailedCount")));
+      updateBtn->setText("檢查中");
       updateBtn->setEnabled(false);
     }
     std::system("pkill -1 -f selfdrive.updated");
   });
 
 
-  auto uninstallBtn = new ButtonControl("解除安裝" + getBrand(), "UNINSTALL");
+  auto uninstallBtn = new ButtonControl("解除安裝" + getBrand(), "解除安裝");
   connect(uninstallBtn, &ButtonControl::clicked, [&]() {
     if (ConfirmationDialog::confirm("你確定要解除安裝嗎?", this)) {
       params.putBool("DoUninstall", true);
@@ -249,7 +249,7 @@ SoftwarePanel::SoftwarePanel(QWidget* parent) : ListWidget(parent) {
 
   QWidget *widgets[] = {versionLbl, lastUpdateLbl, updateBtn, gitBranchLbl, gitCommitLbl, osVersionLbl, uninstallBtn};
   for (QWidget* w : widgets) {
-    addItem(w);
+    Item(w);
   }
 
   fs_watch = new QFileSystemWatcher(this);
@@ -294,24 +294,24 @@ C2NetworkPanel::C2NetworkPanel(QWidget *parent) : QWidget(parent) {
 #ifdef QCOM
   auto wifiBtn = new ButtonControl("Wi-Fi設定", "開啟");
   QObject::connect(wifiBtn, &ButtonControl::clicked, [=]() { HardwareEon::launch_wifi(); });
-  list->addItem(wifiBtn);
+  list->Item(wifiBtn);
 
   auto tetheringBtn = new ButtonControl("網路分享設定", "開啟");
   QObject::connect(tetheringBtn, &ButtonControl::clicked, [=]() { HardwareEon::launch_tethering(); });
-  list->addItem(tetheringBtn);
+  list->Item(tetheringBtn);
 #endif
-  ipaddress = new LabelControl("IP位址", "");
-  list->addItem(ipaddress);
+  ipress = new LabelControl("IP位址", "");
+  list->Item(ipress);
 
   // SSH key management
-  list->addItem(new SshToggle());
-  list->addItem(new SshControl());
-  layout->addWidget(list);
-  layout->addStretch(1);
+  list->Item(new SshToggle());
+  list->Item(new SshControl());
+  layout->Widget(list);
+  layout->Stretch(1);
 }
 
 void C2NetworkPanel::showEvent(QShowEvent *event) {
-  ipaddress->setText(getIPAddress());
+  ipress->setText(getIPress());
 }
 
 QString C2NetworkPanel::getIPAddress() {
