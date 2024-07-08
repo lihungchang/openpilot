@@ -56,7 +56,7 @@ TogglesPanel::TogglesPanel(SettingsWindow *parent) : ListWidget(parent) {
     {
       "RecordFront",
       "錄影並上傳駕駛監控影像",
-      "「上傳面向駕駛員的攝影機數據，幫助改進駕駛員監控演算法。",
+      "上傳駕駛員監控的攝影機影像，幫助改進駕駛員監控演算法。",
       "../assets/offroad/icon_monitoring.png",
     },
     {
