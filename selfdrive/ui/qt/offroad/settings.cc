@@ -62,7 +62,7 @@ TogglesPanel::TogglesPanel(SettingsWindow *parent) : ListWidget(parent) {
     {
       "EndToEndToggle",
       "\U0001f96c 啟用無車道標線模式(測試版) \U0001f96c",
-      "In this mode openpilot will ignore lanelines and just drive how it thinks a human would.",
+      "在這種模式下，openpilot 將忽略車道線，只以人類認為的方式駕駛。",
       "../assets/offroad/icon_road.png",
     },
 #ifdef ENABLE_MAPS
@@ -173,8 +173,8 @@ DevicePanel::DevicePanel(SettingsWindow *parent) : ListWidget(parent) {
 
 void DevicePanel::updateCalibDescription() {
   QString desc =
-      "openpilot requires the device to be mounted within 4° left or right and "
-      "within 5° up or 8° down. openpilot is continuously calibrating, resetting is rarely required.";
+      "openpilot 要求設備安裝在左或右 4° 以內，且 "
+      "向上 5° 或向下 8° 以內。 openpilot 會持續校準，很少需要重設。";
   std::string calib_bytes = Params().get("CalibrationParams");
   if (!calib_bytes.empty()) {
     try {
@@ -300,7 +300,7 @@ C2NetworkPanel::C2NetworkPanel(QWidget *parent) : QWidget(parent) {
   QObject::connect(tetheringBtn, &ButtonControl::clicked, [=]() { HardwareEon::launch_tethering(); });
   list->addItem(tetheringBtn);
 #endif
-  ipaddress = new LabelControl("IP Address", "");
+  ipaddress = new LabelControl("IP位址", "");
   list->addItem(ipaddress);
 
   // SSH key management
