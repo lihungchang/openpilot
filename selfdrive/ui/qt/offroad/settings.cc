@@ -31,31 +31,31 @@ TogglesPanel::TogglesPanel(SettingsWindow *parent) : ListWidget(parent) {
   std::vector<std::tuple<QString, QString, QString, QString>> toggles{
     {
       "OpenpilotEnabledToggle",
-      "Enable openpilot",
+      "啟動openpilot",
       "Use the openpilot system for adaptive cruise control and lane keep driver assistance. Your attention is required at all times to use this feature. Changing this setting takes effect when the car is powered off.",
       "../assets/offroad/icon_openpilot.png",
     },
     {
       "IsLdwEnabled",
-      "Enable Lane Departure Warnings",
+      "開啟車道偏離示警",
       "Receive alerts to steer back into the lane when your vehicle drifts over a detected lane line without a turn signal activated while driving over 31 mph (50 km/h).",
       "../assets/offroad/icon_warning.png",
     },
     {
       "IsRHD",
-      "Enable Right-Hand Drive",
+      "右駕模式",
       "Allow openpilot to obey left-hand traffic conventions and perform driver monitoring on right driver seat.",
       "../assets/offroad/icon_openpilot_mirrored.png",
     },
     {
       "IsMetric",
-      "Use Metric System",
+      "使用公制單位",
       "Display speed in km/h instead of mph.",
       "../assets/offroad/icon_metric.png",
     },
     {
       "RecordFront",
-      "Record and Upload Driver Camera",
+      "錄影並上傳駕駛監控影像",
       "Upload data from the driver facing camera and help improve the driver monitoring algorithm.",
       "../assets/offroad/icon_monitoring.png",
     },
@@ -105,24 +105,24 @@ DevicePanel::DevicePanel(SettingsWindow *parent) : ListWidget(parent) {
 
   // offroad-only buttons
 
-  auto dcamBtn = new ButtonControl("Driver Camera", "PREVIEW",
+  auto dcamBtn = new ButtonControl("駕駛員監控鏡頭", "預覽",
                                    "Preview the driver facing camera to help optimize device mounting position for best driver monitoring experience. (vehicle must be off)");
   connect(dcamBtn, &ButtonControl::clicked, [=]() { emit showDriverView(); });
   addItem(dcamBtn);
 
-  auto resetCalibBtn = new ButtonControl("Reset Calibration", "RESET", " ");
+  auto resetCalibBtn = new ButtonControl("重設校準", "重設", " ");
   connect(resetCalibBtn, &ButtonControl::showDescription, this, &DevicePanel::updateCalibDescription);
   connect(resetCalibBtn, &ButtonControl::clicked, [&]() {
-    if (ConfirmationDialog::confirm("Are you sure you want to reset calibration?", this)) {
+    if (ConfirmationDialog::confirm("你確定要重設校準嗎?", this)) {
       params.remove("CalibrationParams");
     }
   });
   addItem(resetCalibBtn);
 
   if (!params.getBool("Passive")) {
-    auto retrainingBtn = new ButtonControl("Review Training Guide", "REVIEW", "Review the rules, features, and limitations of openpilot");
+    auto retrainingBtn = new ButtonControl("重新啟動訓練流程", "重啟", "Review the rules, features, and limitations of openpilot");
     connect(retrainingBtn, &ButtonControl::clicked, [=]() {
-      if (ConfirmationDialog::confirm("Are you sure you want to review the training guide?", this)) {
+      if (ConfirmationDialog::confirm("你確定重新啟動訓練流程嗎?", this)) {
         emit reviewTrainingGuide();
       }
     });
@@ -148,12 +148,12 @@ DevicePanel::DevicePanel(SettingsWindow *parent) : ListWidget(parent) {
   QHBoxLayout *power_layout = new QHBoxLayout();
   power_layout->setSpacing(30);
 
-  QPushButton *reboot_btn = new QPushButton("Reboot");
+  QPushButton *reboot_btn = new QPushButton("重開機");
   reboot_btn->setObjectName("reboot_btn");
   power_layout->addWidget(reboot_btn);
   QObject::connect(reboot_btn, &QPushButton::clicked, this, &DevicePanel::reboot);
 
-  QPushButton *poweroff_btn = new QPushButton("Power Off");
+  QPushButton *poweroff_btn = new QPushButton("關機");
   poweroff_btn->setObjectName("poweroff_btn");
   power_layout->addWidget(poweroff_btn);
   QObject::connect(poweroff_btn, &QPushButton::clicked, this, &DevicePanel::poweroff);
@@ -197,27 +197,27 @@ void DevicePanel::updateCalibDescription() {
 
 void DevicePanel::reboot() {
   if (!uiState()->engaged()) {
-    if (ConfirmationDialog::confirm("Are you sure you want to reboot?", this)) {
+    if (ConfirmationDialog::confirm("你確定要重開機嗎?", this)) {
       // Check engaged again in case it changed while the dialog was open
       if (!uiState()->engaged()) {
         Params().putBool("DoReboot", true);
       }
     }
   } else {
-    ConfirmationDialog::alert("Disengage to Reboot", this);
+    ConfirmationDialog::alert("要重開機必須關閉跟車", this);
   }
 }
 
 void DevicePanel::poweroff() {
   if (!uiState()->engaged()) {
-    if (ConfirmationDialog::confirm("Are you sure you want to power off?", this)) {
+    if (ConfirmationDialog::confirm("你確定要關機嗎?", this)) {
       // Check engaged again in case it changed while the dialog was open
       if (!uiState()->engaged()) {
         Params().putBool("DoShutdown", true);
       }
     }
   } else {
-    ConfirmationDialog::alert("Disengage to Power Off", this);
+    ConfirmationDialog::alert("要關機必須關閉跟車", this);
   }
 }
 
@@ -239,9 +239,9 @@ SoftwarePanel::SoftwarePanel(QWidget* parent) : ListWidget(parent) {
   });
 
 
-  auto uninstallBtn = new ButtonControl("Uninstall " + getBrand(), "UNINSTALL");
+  auto uninstallBtn = new ButtonControl("解除安裝" + getBrand(), "UNINSTALL");
   connect(uninstallBtn, &ButtonControl::clicked, [&]() {
-    if (ConfirmationDialog::confirm("Are you sure you want to uninstall?", this)) {
+    if (ConfirmationDialog::confirm("你確定要解除安裝嗎?", this)) {
       params.putBool("DoUninstall", true);
     }
   });
@@ -292,15 +292,15 @@ C2NetworkPanel::C2NetworkPanel(QWidget *parent) : QWidget(parent) {
   list->setSpacing(30);
   // wifi + tethering buttons
 #ifdef QCOM
-  auto wifiBtn = new ButtonControl("Wi-Fi Settings", "OPEN");
+  auto wifiBtn = new ButtonControl("Wi-Fi設定", "開啟");
   QObject::connect(wifiBtn, &ButtonControl::clicked, [=]() { HardwareEon::launch_wifi(); });
   list->addItem(wifiBtn);
 
-  auto tetheringBtn = new ButtonControl("Tethering Settings", "OPEN");
+  auto tetheringBtn = new ButtonControl("網路分享設定", "開啟");
   QObject::connect(tetheringBtn, &ButtonControl::clicked, [=]() { HardwareEon::launch_tethering(); });
   list->addItem(tetheringBtn);
 #endif
-  ipaddress = new LabelControl("IP Address", "");
+  ipaddress = new LabelControl("IP位址", "");
   list->addItem(ipaddress);
 
   // SSH key management
