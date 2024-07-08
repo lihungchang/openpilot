@@ -32,31 +32,31 @@ TogglesPanel::TogglesPanel(SettingsWindow *parent) : ListWidget(parent) {
     {
       "OpenpilotEnabledToggle",
       "啟用openpilot功能",
-      "Use the openpilot system for adaptive cruise control and lane keep driver assistance. Your attention is required at all times to use this feature. Changing this setting takes effect when the car is powered off.",
+      "使用openpilot系統進行自適應巡航控制和車道維持駕駛輔助。使用此功能時需要始終保持專注。此設定必須要在汽車熄火狀態更改。",
       "../assets/offroad/icon_openpilot.png",
     },
     {
       "IsLdwEnabled",
       "開啟車道偏離警示",
-      "Receive alerts to steer back into the lane when your vehicle drifts over a detected lane line without a turn signal activated while driving over 31 mph (50 km/h).",
+      "當您的車輛在行駛速度超過 31 英里/小時（50 公里/小時）且未啟動放向燈的情況下漂移越過偵測到的車道線時，您會收到提醒以返回車道。",
       "../assets/offroad/icon_warning.png",
     },
     {
       "IsRHD",
       "右駕模式",
-      "Allow openpilot to obey left-hand traffic conventions and perform driver monitoring on right driver seat.",
+      "當車輛為右駕車,請啟動此選項以利監控駕駛員。",
       "../assets/offroad/icon_openpilot_mirrored.png",
     },
     {
       "IsMetric",
       "使用公制單位",
-      "Display speed in km/h instead of mph.",
+      "顯示時速為公里/小時。",
       "../assets/offroad/icon_metric.png",
     },
     {
       "RecordFront",
       "錄影並上傳駕駛監控影像",
-      "Upload data from the driver facing camera and help improve the driver monitoring algorithm.",
+      "「上傳面向駕駛員的攝影機數據，幫助改進駕駛員監控演算法。",
       "../assets/offroad/icon_monitoring.png",
     },
     {
@@ -227,7 +227,7 @@ SoftwarePanel::SoftwarePanel(QWidget* parent) : ListWidget(parent) {
   osVersionLbl = new LabelControl("作業系統版本");
   versionLbl = new LabelControl("OpenPilot版本", "", QString::fromStdString(params.get("ReleaseNotes")).trimmed());
   lastUpdateLbl = new LabelControl("最後檢查更新時間", "", "The last time openpilot successfully checked for an update. The updater only runs while the car is off.");
-  updateBtn = new ButtonControl("檢查更新", "");
+  updateBtn = new ButtonControl("Check for Update", "");
   connect(updateBtn, &ButtonControl::clicked, [=]() {
     if (params.getBool("IsOffroad")) {
       fs_watch->Path(QString::fromStdString(params.getParamPath("LastUpdateTime")));
