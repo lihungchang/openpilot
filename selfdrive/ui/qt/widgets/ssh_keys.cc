@@ -31,10 +31,10 @@ void SshControl::refresh() {
   QString param = QString::fromStdString(params.get("GithubSshKeys"));
   if (param.length()) {
     username_label.setText(QString::fromStdString(params.get("GithubUsername")));
-    setText("REMOVE");
+    setText("移除");
   } else {
     username_label.setText("");
-    setText("ADD");
+    setText("新增");
   }
   setEnabled(true);
 }
