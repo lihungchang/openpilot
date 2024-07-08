@@ -106,7 +106,7 @@ DevicePanel::DevicePanel(SettingsWindow *parent) : ListWidget(parent) {
   // offroad-only buttons
 
   auto dcamBtn = new ButtonControl("駕駛員監控鏡頭", "預覽",
-                                   "預覽駕駛員監控鏡頭，以幫助優化設備安裝位置並獲得最佳駕駛員監控體驗。 （車輛必須熄火）");
+                                   "預覽駕駛員監控鏡頭，以幫助優化設備安裝位置並獲得最佳駕駛員監控體驗（車輛必須熄火）。");
   connect(dcamBtn, &ButtonControl::clicked, [=]() { emit showDriverView(); });
   addItem(dcamBtn);
 
@@ -227,7 +227,7 @@ SoftwarePanel::SoftwarePanel(QWidget* parent) : ListWidget(parent) {
   osVersionLbl = new LabelControl("作業系統版本");
   versionLbl = new LabelControl("OpenPilot版本", "", QString::fromStdString(params.get("ReleaseNotes")).trimmed());
   lastUpdateLbl = new LabelControl("最後檢查更新時間", "", "openpilot 上次成功檢查更新的時間。更新程式僅在汽車熄火時運行。");
-  updateBtn = new ButtonControl("Check for Update", "");
+  updateBtn = new ButtonControl("檢查更新", "");
   connect(updateBtn, &ButtonControl::clicked, [=]() {
     if (params.getBool("IsOffroad")) {
       fs_watch->Path(QString::fromStdString(params.getParamPath("LastUpdateTime")));
