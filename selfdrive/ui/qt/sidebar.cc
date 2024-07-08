@@ -57,9 +57,9 @@ void Sidebar::updateState(const UIState &s) {
   ItemStatus connectStatus;
   auto last_ping = deviceState.getLastAthenaPingTime();
   if (last_ping == 0) {
-    connectStatus = params.getBool("PrimeRedirected") ? ItemStatus{"NO\nPRIME", danger_color} : ItemStatus{"CONNECT\nOFFLINE", warning_color};
+    connectStatus = params.getBool("PrimeRedirected") ? ItemStatus{"NO\nPRIME", danger_color} : ItemStatus{"官方服務\n離線", warning_color};
   } else {
-    connectStatus = nanos_since_boot() - last_ping < 80e9 ? ItemStatus{"CONNECT\nONLINE", good_color} : ItemStatus{"CONNECT\nERROR", danger_color};
+    connectStatus = nanos_since_boot() - last_ping < 80e9 ? ItemStatus{"官方服務\n已連線", good_color} : ItemStatus{"官方服務\n錯誤", danger_color};
   }
   setProperty("connectStatus", QVariant::fromValue(connectStatus));
 
@@ -74,7 +74,7 @@ void Sidebar::updateState(const UIState &s) {
 
   ItemStatus pandaStatus = {"車輛\n已連線", good_color};
   if (s.scene.pandaType == cereal::PandaState::PandaType::UNKNOWN) {
-    pandaStatus = {"沒有\n熊貓", danger_color};
+    pandaStatus = {"熊貓\n未連線", danger_color};
   } else if (s.scene.started && !sm["liveLocationKalman"].getLiveLocationKalman().getGpsOK()) {
     pandaStatus = {"GPS\n搜尋中", warning_color};
   }
