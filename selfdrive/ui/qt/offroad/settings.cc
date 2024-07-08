@@ -381,10 +381,10 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QFrame(parent) {
   QObject::connect(device, &DevicePanel::showDriverView, this, &SettingsWindow::showDriverView);
 
   QList<QPair<QString, QWidget *>> panels = {
-    {"Device", device},
-    {"Network", network_panel(this)},
-    {"Toggles", new TogglesPanel(this)},
-    {"Software", new SoftwarePanel(this)},
+    {"設備設定", device},
+    {"網路設定", network_panel(this)},
+    {"功能設定", new TogglesPanel(this)},
+    {"軟體資訊", new SoftwarePanel(this)},
   };
 
 #ifdef ENABLE_MAPS
@@ -421,7 +421,7 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QFrame(parent) {
     nav_btns->addButton(btn);
     sidebar_layout->addWidget(btn, 0, Qt::AlignRight);
 
-    const int lr_margin = name != "網路" ? 50 : 0;  // Network panel handles its own margins
+    const int lr_margin = name != "Network" ? 50 : 0;  // Network panel handles its own margins
     panel->setContentsMargins(lr_margin, 25, lr_margin, 25);
 
     ScrollView *panel_frame = new ScrollView(panel, this);
