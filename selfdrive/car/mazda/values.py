@@ -6,7 +6,7 @@ Ecu = car.CarParams.Ecu
 # Steer torque limits
 
 class CarControllerParams:
-  STEER_MAX = 800                 # theoretical max_steer 2047
+  STEER_MAX = 1200                # theoretical max_steer 2047
   STEER_DELTA_UP = 10             # torque increase per refresh
   STEER_DELTA_DOWN = 25           # torque decrease per refresh
   STEER_DRIVER_ALLOWANCE = 15     # allowed driver torque before start limiting
@@ -68,7 +68,9 @@ CAR.CX5_2022 : {
       b'KJ01-3210X-F-00\x00\x00\x00\x00\x00\x00\x00\x00\x00',       
       b'KJ01-3210X-G-00\x00\x00\x00\x00\x00\x00\x00\x00\x00',
       b'KJ01-3210X-J-00\x00\x00\x00\x00\x00\x00\x00\x00\x00',
-      b'KJ01-3210X-M-00\x00\x00\x00\x00\x00\x00\x00\x00\x00',  
+      b'KJ01-3210X-M-00\x00\x00\x00\x00\x00\x00\x00\x00\x00',
+      #from 2022 CX-5
+      b'KSD5-3210X-C-00\x00\x00\x00\x00\x00\x00\x00\x00\x00',
     ],
     (Ecu.engine, 0x7e0, None): [
       b'PA53-188K2-A\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00',
