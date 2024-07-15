@@ -31,38 +31,38 @@ TogglesPanel::TogglesPanel(SettingsWindow *parent) : ListWidget(parent) {
   std::vector<std::tuple<QString, QString, QString, QString>> toggles{
     {
       "OpenpilotEnabledToggle",
-      "Enable openpilot",
-      "Use the openpilot system for adaptive cruise control and lane keep driver assistance. Your attention is required at all times to use this feature. Changing this setting takes effect when the car is powered off.",
+      "啟用openpilot功能",
+      "使用openpilot系統進行自適應巡航控制和車道維持駕駛輔助。使用此功能時需要始終保持專注。此設定必須要在汽車熄火狀態更改。",
       "../assets/offroad/icon_openpilot.png",
     },
     {
       "IsLdwEnabled",
-      "Enable Lane Departure Warnings",
-      "Receive alerts to steer back into the lane when your vehicle drifts over a detected lane line without a turn signal activated while driving over 31 mph (50 km/h).",
+      "開啟車道偏離警示",
+      "當您的車輛在行駛速度超過 31 英里/小時（50 公里/小時）且未啟動放向燈的情況下漂移越過偵測到的車道線時，您會收到提醒以返回車道。",
       "../assets/offroad/icon_warning.png",
     },
     {
       "IsRHD",
-      "Enable Right-Hand Drive",
-      "Allow openpilot to obey left-hand traffic conventions and perform driver monitoring on right driver seat.",
+      "右駕模式",
+      "當車輛為右駕車,請啟動此選項以利監控駕駛員。",
       "../assets/offroad/icon_openpilot_mirrored.png",
     },
     {
       "IsMetric",
-      "Use Metric System",
-      "Display speed in km/h instead of mph.",
+      "使用公制單位",
+      "顯示時速為公里/小時。",
       "../assets/offroad/icon_metric.png",
     },
     {
       "RecordFront",
-      "Record and Upload Driver Camera",
-      "Upload data from the driver facing camera and help improve the driver monitoring algorithm.",
+      "錄影並上傳駕駛監控影像",
+      "上傳駕駛員監控的攝影機影像，幫助改進駕駛員監控演算法。",
       "../assets/offroad/icon_monitoring.png",
     },
     {
       "EndToEndToggle",
-      "\U0001f96c Disable use of lanelines (Alpha) \U0001f96c",
-      "In this mode openpilot will ignore lanelines and just drive how it thinks a human would.",
+      "\U0001f96c 啟用無車道標線模式(測試版) \U0001f96c",
+      "在這種模式下，openpilot 將忽略車道線，只以人類認為的方式駕駛。",
       "../assets/offroad/icon_road.png",
     },
 #ifdef ENABLE_MAPS
@@ -101,28 +101,28 @@ TogglesPanel::TogglesPanel(SettingsWindow *parent) : ListWidget(parent) {
 DevicePanel::DevicePanel(SettingsWindow *parent) : ListWidget(parent) {
   setSpacing(50);
   addItem(new LabelControl("Dongle ID", getDongleId().value_or("N/A")));
-  addItem(new LabelControl("Serial", params.get("HardwareSerial").c_str()));
+  addItem(new LabelControl("機器序號", params.get("HardwareSerial").c_str()));
 
   // offroad-only buttons
 
-  auto dcamBtn = new ButtonControl("Driver Camera", "PREVIEW",
-                                   "Preview the driver facing camera to help optimize device mounting position for best driver monitoring experience. (vehicle must be off)");
+  auto dcamBtn = new ButtonControl("駕駛員監控鏡頭", "預覽",
+                                   "預覽駕駛員監控鏡頭，以幫助優化設備安裝位置並獲得最佳駕駛員監控體驗（車輛必須熄火）。");
   connect(dcamBtn, &ButtonControl::clicked, [=]() { emit showDriverView(); });
   addItem(dcamBtn);
 
-  auto resetCalibBtn = new ButtonControl("Reset Calibration", "RESET", " ");
+  auto resetCalibBtn = new ButtonControl("重設校準", "重設", " ");
   connect(resetCalibBtn, &ButtonControl::showDescription, this, &DevicePanel::updateCalibDescription);
   connect(resetCalibBtn, &ButtonControl::clicked, [&]() {
-    if (ConfirmationDialog::confirm("Are you sure you want to reset calibration?", this)) {
+    if (ConfirmationDialog::confirm("你確定要重設校準嗎?", this)) {
       params.remove("CalibrationParams");
     }
   });
   addItem(resetCalibBtn);
 
   if (!params.getBool("Passive")) {
-    auto retrainingBtn = new ButtonControl("Review Training Guide", "REVIEW", "Review the rules, features, and limitations of openpilot");
+    auto retrainingBtn = new ButtonControl("重新啟動訓練流程", "重啟", "重新觀看openpilot的規則、功能和限制");
     connect(retrainingBtn, &ButtonControl::clicked, [=]() {
-      if (ConfirmationDialog::confirm("Are you sure you want to review the training guide?", this)) {
+      if (ConfirmationDialog::confirm("你確定重新啟動訓練流程嗎?", this)) {
         emit reviewTrainingGuide();
       }
     });
@@ -148,12 +148,12 @@ DevicePanel::DevicePanel(SettingsWindow *parent) : ListWidget(parent) {
   QHBoxLayout *power_layout = new QHBoxLayout();
   power_layout->setSpacing(30);
 
-  QPushButton *reboot_btn = new QPushButton("Reboot");
+  QPushButton *reboot_btn = new QPushButton("重開機");
   reboot_btn->setObjectName("reboot_btn");
   power_layout->addWidget(reboot_btn);
   QObject::connect(reboot_btn, &QPushButton::clicked, this, &DevicePanel::reboot);
 
-  QPushButton *poweroff_btn = new QPushButton("Power Off");
+  QPushButton *poweroff_btn = new QPushButton("關機");
   poweroff_btn->setObjectName("poweroff_btn");
   power_layout->addWidget(poweroff_btn);
   QObject::connect(poweroff_btn, &QPushButton::clicked, this, &DevicePanel::poweroff);
@@ -173,8 +173,8 @@ DevicePanel::DevicePanel(SettingsWindow *parent) : ListWidget(parent) {
 
 void DevicePanel::updateCalibDescription() {
   QString desc =
-      "openpilot requires the device to be mounted within 4° left or right and "
-      "within 5° up or 8° down. openpilot is continuously calibrating, resetting is rarely required.";
+      "openpilot 要求設備安裝在左或右 4° 以內，且 "
+      "向上 5° 或向下 8° 以內。 openpilot 會持續校準，很少需要重設。";
   std::string calib_bytes = Params().get("CalibrationParams");
   if (!calib_bytes.empty()) {
     try {
@@ -197,51 +197,51 @@ void DevicePanel::updateCalibDescription() {
 
 void DevicePanel::reboot() {
   if (!uiState()->engaged()) {
-    if (ConfirmationDialog::confirm("Are you sure you want to reboot?", this)) {
+    if (ConfirmationDialog::confirm("你確定要重開機嗎?", this)) {
       // Check engaged again in case it changed while the dialog was open
       if (!uiState()->engaged()) {
         Params().putBool("DoReboot", true);
       }
     }
   } else {
-    ConfirmationDialog::alert("Disengage to Reboot", this);
+    ConfirmationDialog::alert("要重開機必須關閉跟車", this);
   }
 }
 
 void DevicePanel::poweroff() {
   if (!uiState()->engaged()) {
-    if (ConfirmationDialog::confirm("Are you sure you want to power off?", this)) {
+    if (ConfirmationDialog::confirm("你確定要關機嗎?", this)) {
       // Check engaged again in case it changed while the dialog was open
       if (!uiState()->engaged()) {
         Params().putBool("DoShutdown", true);
       }
     }
   } else {
-    ConfirmationDialog::alert("Disengage to Power Off", this);
+    ConfirmationDialog::alert("要關機必須關閉跟車", this);
   }
 }
 
 SoftwarePanel::SoftwarePanel(QWidget* parent) : ListWidget(parent) {
   gitBranchLbl = new LabelControl("Git Branch");
   gitCommitLbl = new LabelControl("Git Commit");
-  osVersionLbl = new LabelControl("OS Version");
-  versionLbl = new LabelControl("Version", "", QString::fromStdString(params.get("ReleaseNotes")).trimmed());
-  lastUpdateLbl = new LabelControl("Last Update Check", "", "The last time openpilot successfully checked for an update. The updater only runs while the car is off.");
-  updateBtn = new ButtonControl("Check for Update", "");
+  osVersionLbl = new LabelControl("作業系統版本");
+  versionLbl = new LabelControl("OpenPilot版本", "", QString::fromStdString(params.get("ReleaseNotes")).trimmed());
+  lastUpdateLbl = new LabelControl("最後檢查更新時間", "", "openpilot 上次成功檢查更新的時間。更新程式僅在汽車熄火時運行。");
+  updateBtn = new ButtonControl("檢查更新", "");
   connect(updateBtn, &ButtonControl::clicked, [=]() {
     if (params.getBool("IsOffroad")) {
       fs_watch->addPath(QString::fromStdString(params.getParamPath("LastUpdateTime")));
       fs_watch->addPath(QString::fromStdString(params.getParamPath("UpdateFailedCount")));
-      updateBtn->setText("CHECKING");
+      updateBtn->setText("檢查中");
       updateBtn->setEnabled(false);
     }
     std::system("pkill -1 -f selfdrive.updated");
   });
 
 
-  auto uninstallBtn = new ButtonControl("Uninstall " + getBrand(), "UNINSTALL");
+  auto uninstallBtn = new ButtonControl("解除安裝" + getBrand(), "解除安裝");
   connect(uninstallBtn, &ButtonControl::clicked, [&]() {
-    if (ConfirmationDialog::confirm("Are you sure you want to uninstall?", this)) {
+    if (ConfirmationDialog::confirm("你確定要解除安裝嗎?", this)) {
       params.putBool("DoUninstall", true);
     }
   });
@@ -255,8 +255,8 @@ SoftwarePanel::SoftwarePanel(QWidget* parent) : ListWidget(parent) {
   fs_watch = new QFileSystemWatcher(this);
   QObject::connect(fs_watch, &QFileSystemWatcher::fileChanged, [=](const QString path) {
     if (path.contains("UpdateFailedCount") && std::atoi(params.get("UpdateFailedCount").c_str()) > 0) {
-      lastUpdateLbl->setText("failed to fetch update");
-      updateBtn->setText("CHECK");
+      lastUpdateLbl->setText("獲取更新失敗");
+      updateBtn->setText("檢查");
       updateBtn->setEnabled(true);
     } else if (path.contains("LastUpdateTime")) {
       updateLabels();
@@ -277,7 +277,7 @@ void SoftwarePanel::updateLabels() {
 
   versionLbl->setText(getBrandVersion());
   lastUpdateLbl->setText(lastUpdate);
-  updateBtn->setText("CHECK");
+  updateBtn->setText("檢查");
   updateBtn->setEnabled(true);
   gitBranchLbl->setText(QString::fromStdString(params.get("GitBranch")));
   gitCommitLbl->setText(QString::fromStdString(params.get("GitCommit")).left(10));
@@ -292,15 +292,15 @@ C2NetworkPanel::C2NetworkPanel(QWidget *parent) : QWidget(parent) {
   list->setSpacing(30);
   // wifi + tethering buttons
 #ifdef QCOM
-  auto wifiBtn = new ButtonControl("Wi-Fi Settings", "OPEN");
+  auto wifiBtn = new ButtonControl("Wi-Fi設定", "開啟");
   QObject::connect(wifiBtn, &ButtonControl::clicked, [=]() { HardwareEon::launch_wifi(); });
   list->addItem(wifiBtn);
 
-  auto tetheringBtn = new ButtonControl("Tethering Settings", "OPEN");
+  auto tetheringBtn = new ButtonControl("網路分享設定", "開啟");
   QObject::connect(tetheringBtn, &ButtonControl::clicked, [=]() { HardwareEon::launch_tethering(); });
   list->addItem(tetheringBtn);
 #endif
-  ipaddress = new LabelControl("IP Address", "");
+  ipaddress = new LabelControl("IP位址", "");
   list->addItem(ipaddress);
 
   // SSH key management
@@ -381,10 +381,10 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QFrame(parent) {
   QObject::connect(device, &DevicePanel::showDriverView, this, &SettingsWindow::showDriverView);
 
   QList<QPair<QString, QWidget *>> panels = {
-    {"Device", device},
-    {"Network", network_panel(this)},
-    {"Toggles", new TogglesPanel(this)},
-    {"Software", new SoftwarePanel(this)},
+    {"設備設定", device},
+    {"網路設定", network_panel(this)},
+    {"功能設定", new TogglesPanel(this)},
+    {"軟體資訊", new SoftwarePanel(this)},
   };
 
 #ifdef ENABLE_MAPS
