@@ -4,16 +4,16 @@
 #include "selfdrive/ui/qt/api.h"
 #include "selfdrive/ui/qt/widgets/input.h"
 
-SshControl::SshControl() : ButtonControl("SSH Keys", "", "Warning: This grants SSH access to all public keys in your GitHub settings. Never enter a GitHub username other than your own. A comma employee will NEVER ask you to add their GitHub username.") {
+SshControl::SshControl() : ButtonControl("SSH公鑰", "", "警告：這將授予對GitHub設定中所有公鑰的SSH存取權。切勿輸入您自己以外的GitHub使用者名稱。COMMA AI員工絕對不會要求您新增他們的GitHub使用者名稱") {
   username_label.setAlignment(Qt::AlignRight | Qt::AlignVCenter);
   username_label.setStyleSheet("color: #aaaaaa");
   hlayout->insertWidget(1, &username_label);
 
   QObject::connect(this, &ButtonControl::clicked, [=]() {
     if (text() == "ADD") {
-      QString username = InputDialog::getText("Enter your GitHub username", this);
+      QString username = InputDialog::getText("輸入你的GitHub使用者名稱", this);
       if (username.length() > 0) {
-        setText("LOADING");
+        setText("載入中");
         setEnabled(false);
         getUserKeys(username);
       }
@@ -31,10 +31,10 @@ void SshControl::refresh() {
   QString param = QString::fromStdString(params.get("GithubSshKeys"));
   if (param.length()) {
     username_label.setText(QString::fromStdString(params.get("GithubUsername")));
-    setText("REMOVE");
+    setText("移除");
   } else {
     username_label.setText("");
-    setText("ADD");
+    setText("新增");
   }
   setEnabled(true);
 }
@@ -47,13 +47,13 @@ void SshControl::getUserKeys(const QString &username) {
         params.put("GithubUsername", username.toStdString());
         params.put("GithubSshKeys", resp.toStdString());
       } else {
-        ConfirmationDialog::alert(QString("Username '%1' has no keys on GitHub").arg(username), this);
+        ConfirmationDialog::alert(QString("GitHub使用者名稱: '%1' 不存在SSH Keys").arg(username), this);
       }
     } else {
       if (request->timeout()) {
-        ConfirmationDialog::alert("Request timed out", this);
+        ConfirmationDialog::alert("連線逾時", this);
       } else {
-        ConfirmationDialog::alert(QString("Username '%1' doesn't exist on GitHub").arg(username), this);
+        ConfirmationDialog::alert(QString("GitHub使用者名稱: '%1' 不存在").arg(username), this);
       }
     }
 
