@@ -4,7 +4,7 @@
 #include "selfdrive/ui/qt/api.h"
 #include "selfdrive/ui/qt/widgets/input.h"
 
-SshControl::SshControl() : ButtonControl("SSH工鑰", "", "警告：這將授予對GitHub設定中所有公鑰的SSH存取權。切勿輸入您自己以外的GitHub使用者名稱。COMMA AI員工絕對不會要求您新增他們的GitHub使用者名稱") {
+SshControl::SshControl() : ButtonControl("SSH公鑰", "", "警告：這將授予對GitHub設定中所有公鑰的SSH存取權。切勿輸入您自己以外的GitHub使用者名稱。COMMA AI員工絕對不會要求您新增他們的GitHub使用者名稱") {
   username_label.setAlignment(Qt::AlignRight | Qt::AlignVCenter);
   username_label.setStyleSheet("color: #aaaaaa");
   hlayout->insertWidget(1, &username_label);
