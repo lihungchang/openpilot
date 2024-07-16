@@ -88,8 +88,13 @@ class CarState(CarStateBase):
     # Check if LKAS is disabled due to lack of driver torque when all other states indicate
     # it should be enabled (steer lockout). Don't warn until we actually get lkas active
     # and lose it again, i.e, after initial lkas activation
-    ret.steerWarning = self.lkas_allowed_speed and lkas_blocked
-
+    # ret.steerWarning = self.lkas_allowed_speed and lkas_blocked
+    if self.CP.carFingerprint in [CAR.CX9_2021, CAR.CX5_2022, CAR.CX5]: #CX5更換CX5_2022方向機測試
+      ret.steerWarning = False
+    else:
+      # On if no driver torque the last 5 seconds
+      ret.steerWarning = cp.vl["STEER_RATE"]["HANDS_OFF_5_SECONDS"] == 1
+      
     self.acc_active_last = ret.cruiseState.enabled
 
     self.crz_btns_counter = cp.vl["CRZ_BTNS"]["CTR"]
