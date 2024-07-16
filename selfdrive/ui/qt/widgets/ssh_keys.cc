@@ -10,7 +10,7 @@ SshControl::SshControl() : ButtonControl("SSH公鑰", "", "警告：這將授予
   hlayout->insertWidget(1, &username_label);
 
   QObject::connect(this, &ButtonControl::clicked, [=]() {
-    if (text() == "ADD") {
+    if (text() == "新增") {
       QString username = InputDialog::getText("輸入你的GitHub使用者名稱", this);
       if (username.length() > 0) {
         setText("載入中");
