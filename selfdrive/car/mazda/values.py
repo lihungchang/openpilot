@@ -6,7 +6,7 @@ Ecu = car.CarParams.Ecu
 # Steer torque limits
 
 class CarControllerParams:
-  STEER_MAX = 1200                # theoretical max_steer 2047
+  STEER_MAX = 1200                # theoretical max_steer 2047,原先800換了EPS放大測試
   STEER_DELTA_UP = 10             # torque increase per refresh
   STEER_DELTA_DOWN = 25           # torque decrease per refresh
   STEER_DRIVER_ALLOWANCE = 15     # allowed driver torque before start limiting
