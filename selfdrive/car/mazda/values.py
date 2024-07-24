@@ -4,7 +4,7 @@ Ecu = car.CarParams.Ecu
 
 # Steer torque limits
 class CarControllerParams:
-  STEER_MAX = 1000                 # theoretical max_steer 2047
+  STEER_MAX = 1200                 # theoretical max_steer 2047
   STEER_DELTA_UP = 10              # torque increase per refresh
   STEER_DELTA_DOWN = 25            # torque decrease per refresh
   STEER_DRIVER_ALLOWANCE = 5       # allowed driver torque before start limiting
@@ -12,7 +12,7 @@ class CarControllerParams:
   STEER_DRIVER_FACTOR = 1          # from dbc
   STEER_ERROR_MAX = 350            # max delta between torque cmd and torque motor
 
-  TI_STEER_MAX = 1000              # theoretical max_steer 2047
+  TI_STEER_MAX = 600               # theoretical max_steer 2047
   TI_STEER_DELTA_UP = 6            # torque increase per refresh
   TI_STEER_DELTA_DOWN = 15         # torque decrease per refresh
   TI_STEER_DRIVER_ALLOWANCE = 5    # allowed driver torque before start limiting
@@ -76,7 +76,7 @@ FW_VERSIONS = {
     ],
   },
 	
-  CAR.CX5_2022 : {
+  CAR.CX5 : {
     (Ecu.eps, 0x730, None): [
       b'KSD5-3210X-C-00\x00\x00\x00\x00\x00\x00\x00\x00\x00',
     ],
@@ -100,7 +100,7 @@ FW_VERSIONS = {
     ],
   },
 	
-  CAR.CX5: {
+  CAR.CX5_2022: {
     (Ecu.eps, 0x730, None): [
       b'K070-3210X-C-00\x00\x00\x00\x00\x00\x00\x00\x00\x00',    
       b'K319-3210X-A-00\x00\x00\x00\x00\x00\x00\x00\x00\x00',
