@@ -76,7 +76,7 @@ FW_VERSIONS = {
     ],
   },
 	
-  CAR.CX5 : {
+  CAR.CX5_2022 : {
     (Ecu.eps, 0x730, None): [
       b'KSD5-3210X-C-00\x00\x00\x00\x00\x00\x00\x00\x00\x00',
     ],
@@ -100,7 +100,7 @@ FW_VERSIONS = {
     ],
   },
 	
-  CAR.CX5_2022: {
+  CAR.CX5: {
     (Ecu.eps, 0x730, None): [
       b'K070-3210X-C-00\x00\x00\x00\x00\x00\x00\x00\x00\x00',    
       b'K319-3210X-A-00\x00\x00\x00\x00\x00\x00\x00\x00\x00',
