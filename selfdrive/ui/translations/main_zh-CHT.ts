@@ -96,11 +96,11 @@
     </message>
     <message>
         <source>Always</source>
-        <translation type="unfinished"></translation>
+        <translation>持續</translation>
     </message>
     <message>
         <source>Only Onroad</source>
-        <translation type="unfinished"></translation>
+        <translation>上路</translation>
     </message>
     <message>
         <source>Until Reboot</source>
@@ -641,11 +641,11 @@
     </message>
     <message>
         <source>Flash Panda</source>
-        <translation type="unfinished"></translation>
+        <translation>Panda韌體重寫</translation>
     </message>
     <message>
         <source>FLASH</source>
-        <translation type="unfinished"></translation>
+        <translation>寫入</translation>
     </message>
     <message>
         <source>Use this button to troubleshoot and update the Panda device&apos;s firmware.</source>
@@ -653,67 +653,67 @@
     </message>
     <message>
         <source>Are you sure you want to flash the Panda?</source>
-        <translation type="unfinished"></translation>
+        <translation>你確定你要重寫panda韌體嗎?</translation>
     </message>
     <message>
         <source>Flash</source>
-        <translation type="unfinished"></translation>
+        <translation>寫入</translation>
     </message>
     <message>
         <source>Flashing...</source>
-        <translation type="unfinished"></translation>
+        <translation>寫入中...中...</translation>
     </message>
     <message>
         <source>Recovery Failed...</source>
-        <translation type="unfinished"></translation>
+        <translation>還原失敗</translation>
     </message>
     <message>
         <source>Flash Failed...</source>
-        <translation type="unfinished"></translation>
+        <translation>寫入失敗</translation>
     </message>
     <message>
         <source>Flashed!</source>
-        <translation type="unfinished"></translation>
+        <translation>寫入完成</translation>
     </message>
     <message>
         <source>Reset Toggles To Default</source>
-        <translation type="unfinished"></translation>
+        <translation>把Toggles恢復為預設值</translation>
     </message>
     <message>
         <source>Reset your toggle settings back to their default settings.</source>
-        <translation type="unfinished"></translation>
+        <translation>把Toggles設定恢復為預設值</translation>
     </message>
     <message>
         <source>Are you sure you want to completely reset all of your toggle settings?</source>
-        <translation type="unfinished"></translation>
+        <translation>你確定要把Toggles恢復為預設值?</translation>
     </message>
     <message>
         <source>Resetting toggles...</source>
-        <translation type="unfinished"></translation>
+        <translation>重設Toggles中...</translation>
     </message>
     <message>
         <source>Reset!</source>
-        <translation type="unfinished"></translation>
+        <translation>恢復預設值完成</translation>
     </message>
     <message>
         <source>Force Started State</source>
-        <translation type="unfinished"></translation>
+        <translation>強制工作狀態切換</translation>
     </message>
     <message>
         <source>OFFROAD</source>
-        <translation type="unfinished"></translation>
+        <translation>非上路狀態</translation>
     </message>
     <message>
         <source>ONROAD</source>
-        <translation type="unfinished"></translation>
+        <translation>上路狀態</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation type="unfinished"></translation>
+        <translation>關閉</translation>
     </message>
     <message>
         <source>Force openpilot either offroad or onroad.</source>
-        <translation type="unfinished"></translation>
+        <translation>強制切換openpilot的工作狀態</translation>
     </message>
 </context>
 <context>
@@ -1122,7 +1122,7 @@ This may take up to a minute.</source>
     </message>
     <message>
         <source>Driving</source>
-        <translation>駕駛</translation>
+        <translation>駕駛行為</translation>
     </message>
     <message>
         <source>Navigation</source>
@@ -1134,11 +1134,11 @@ This may take up to a minute.</source>
     </message>
     <message>
         <source>Visuals</source>
-        <translation type="unfinished"></translation>
+        <translation>視覺</translation>
     </message>
     <message>
         <source>Controls</source>
-        <translation type="unfinished"></translation>
+        <translation>控制</translation>
     </message>
 </context>
 <context>
