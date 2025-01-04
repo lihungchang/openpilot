@@ -617,11 +617,11 @@
     </message>
     <message>
         <source>Extracting...</source>
-        <translation type="unfinished"></translation>
+        <translation>解壓縮中...</translation>
     </message>
     <message>
         <source>Restored!</source>
-        <translation>解壓縮中...</translation>
+        <translation>還原成功</translation>
     </message>
     <message>
         <source>Rebooting...</source>
@@ -629,15 +629,15 @@
     </message>
     <message>
         <source>Toggle Backups</source>
-        <translation type="unfinished"></translation>
+        <translation>Toggle備份</translation>
     </message>
     <message>
         <source>Backup, delete, or restore your toggle backups.</source>
-        <translation type="unfinished"></translation>
+        <translation>備份,刪除或是還原你的Toggle備份</translation>
     </message>
     <message>
         <source>Are you sure you want to restore this toggle backup?</source>
-        <translation type="unfinished"></translation>
+        <translation>你確定你要這一份Toggle備份嗎?</translation>
     </message>
     <message>
         <source>Flash Panda</source>
@@ -649,7 +649,7 @@
     </message>
     <message>
         <source>Use this button to troubleshoot and update the Panda device&apos;s firmware.</source>
-        <translation type="unfinished"></translation>
+        <translation>按下此按鈕來處理問題並更新Panda的韌體</translation>
     </message>
     <message>
         <source>Are you sure you want to flash the Panda?</source>
@@ -661,7 +661,7 @@
     </message>
     <message>
         <source>Flashing...</source>
-        <translation>寫入中...中...</translation>
+        <translation>寫入中...</translation>
     </message>
     <message>
         <source>Recovery Failed...</source>
@@ -748,7 +748,7 @@
     </message>
     <message>
         <source>Characters: %1/%2</source>
-        <translation type="unfinished"></translation>
+        <translation>字元: %1/%2</translation>
     </message>
 </context>
 <context>
@@ -785,7 +785,7 @@
     </message>
     <message>
         <source>Manage at %1</source>
-        <translation type="unfinished"></translation>
+        <translation>在 %1 上管理</translation>
     </message>
 </context>
 <context>
@@ -1050,7 +1050,7 @@
     </message>
     <message>
         <source>FrogPilot</source>
-        <translation type="unfinished"></translation>
+        <translation>FrogPilot</translation>
     </message>
 </context>
 <context>
@@ -1442,7 +1442,7 @@ This may take up to a minute.</source>
     </message>
     <message>
         <source>FrogPilot will automatically update itself and it&apos;s assets when you&apos;re offroad and connected to Wi-Fi.</source>
-        <translation type="unfinished"></translation>
+        <translation>FrogPilot會自動在非上路且連上Wi-Fi的狀態下更新</translation>
     </message>
     <message>
         <source>Error Log</source>
@@ -1764,7 +1764,7 @@ This may take up to a minute.</source>
     </message>
     <message>
         <source>Toggle off the &apos;Disable Uploading&apos; toggle to enable uploads.</source>
-        <translation type="unfinished"></translation>
+        <translation>切換此設定來啟動或是關閉上傳</translation>
     </message>
 </context>
 <context>
