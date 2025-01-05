@@ -269,7 +269,7 @@
     </message>
     <message>
         <source>. Press the &quot;Cruise Control&quot; button to disable</source>
-        <translation>按 &quot;跟車&quot; 來關閉</translation>
+        <translation>，︁關閉ACC功能即可關閉全時置中</translation>
     </message>
     <message>
         <source>. Long press the &quot;distance&quot; button to revert</source>
