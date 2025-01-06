@@ -557,7 +557,7 @@
     </message>
     <message>
         <source>FrogPilot Backups</source>
-        <translation>FrogPilot備份檔</translation>
+        <translation>FrogPilot設定備份</translation>
     </message>
     <message>
         <source>BACKUP</source>
@@ -605,7 +605,7 @@
     </message>
     <message>
         <source>Are you sure you want to restore this version of FrogPilot?</source>
-        <translation>你確定要還原這個版本的FrogPilot備份嗎?</translation>
+        <translation>你確定要還原這個版本的FrogPilot設定備份嗎?</translation>
     </message>
     <message>
         <source>Restore</source>
@@ -629,15 +629,15 @@
     </message>
     <message>
         <source>Toggle Backups</source>
-        <translation>Toggle備份</translation>
+        <translation>Toggle設定備份</translation>
     </message>
     <message>
         <source>Backup, delete, or restore your toggle backups.</source>
-        <translation>備份,刪除或是還原你的Toggle備份</translation>
+        <translation>備份,刪除或是還原你的Toggle設定備份</translation>
     </message>
     <message>
         <source>Are you sure you want to restore this toggle backup?</source>
-        <translation>你確定你要這一份Toggle備份嗎?</translation>
+        <translation>你確定你要這一份Toggle設定備份嗎?</translation>
     </message>
     <message>
         <source>Flash Panda</source>
@@ -677,7 +677,7 @@
     </message>
     <message>
         <source>Reset Toggles To Default</source>
-        <translation>把Toggles恢復為預設值</translation>
+        <translation>把Toggles設定恢復為預設值</translation>
     </message>
     <message>
         <source>Reset your toggle settings back to their default settings.</source>
@@ -685,11 +685,11 @@
     </message>
     <message>
         <source>Are you sure you want to completely reset all of your toggle settings?</source>
-        <translation>你確定要把Toggles恢復為預設值?</translation>
+        <translation>你確定要把Toggles設定恢復為預設值?</translation>
     </message>
     <message>
         <source>Resetting toggles...</source>
-        <translation>重設Toggles中...</translation>
+        <translation>重設Toggles設定中...</translation>
     </message>
     <message>
         <source>Reset!</source>
@@ -1130,7 +1130,7 @@ This may take up to a minute.</source>
     </message>
     <message>
         <source>Vehicles</source>
-        <translation>車輛</translation>
+        <translation>車輛選擇</translation>
     </message>
     <message>
         <source>Visuals</source>
@@ -1661,28 +1661,36 @@ This may take up to a minute.</source>
         <translation type="vanished">即使在openpilot未啟動時也啟用駕駛監控。</translation>
     </message>
     <message>
+        <source>Longitudinal Auto-Tune (Beta)</source>
+        <translation>縱向自動調整(測試)</translation>
+    </message>
+    <message>
+        <source>Enable the longitudinal auto-tuning feature. Slowly adjusts the acceleration gain to minimize error.</source>
+        <translation>啟用縱向自動調整功能。緩慢調整加速度增益以最小化誤差。</translation>
+    </message>
+    <message>
         <source>Blended Acc (Experimental)</source>
         <translation>混合式 ACC(實驗性)</translation>
     </message>
     <message>
         <source>Blend stock MRCC and Experimental Mode longitudinal control.</source>
-        <translation>混合MRCC和實驗性縱向的跟車功能</translation>
+        <translation>混合MRCC和OP實驗性縱向的跟車功能</translation>
     </message>
     <message>
         <source>Torque Interceptor Installed</source>
-        <translation>啟動扭力攔截器Torque Interceptor功能</translation>
+        <translation>啟動扭力攔截器(Torque Interceptor)的功能</translation>
     </message>
     <message>
         <source>Enable the torque interceptor to control the steering wheel.</source>
-        <translation>如果你的車輛有安裝扭力攔截器Torque Interceptor</translation>
+        <translation>如果你的車輛有安裝扭力攔截器(Torque Interceptor)請選取此項</translation>
     </message>
     <message>
         <source>Radar Interceptor Installed</source>
-        <translation>啟動雷達攔截器Radar Interceptor功能</translation>
+        <translation>啟動雷達攔截器(Radar Interceptor)的功能</translation>
     </message>
     <message>
         <source>Enable if you have installed the radar Iterceptor.</source>
-        <translation>如果你的車輛有安裝雷達攔截器Radar Interceptor</translation>
+        <translation>如果你的車輛有安裝雷達攔截器(Radar Interceptor)請選取此項</translation>
     </message>
     <message>
         <source>Car Does not have stock MRCC</source>
@@ -1690,7 +1698,7 @@ This may take up to a minute.</source>
     </message>
     <message>
         <source>Enable if your car does not have stock MRCC.</source>
-        <translation>車輛沒有配備MRCC請啟動此項</translation>
+        <translation>車輛沒有配備MRCC請選取此項</translation>
     </message>
     <message>
         <source>Car Does not have stock FSC</source>
@@ -1698,7 +1706,15 @@ This may take up to a minute.</source>
     </message>
     <message>
         <source>Enable if your car does not have stock FSC.</source>
-        <translation>車輛沒有配備FSC請起啟動此項</translation>
+        <translation>車輛沒有配備FSC請選取此項</translation>
+    </message>
+    <message>
+        <source>Manual Transmission</source>
+        <translation>手排車</translation>
+    </message>
+    <message>
+        <source>Enable if your is a manual.</source>
+        <translation>手排車請啟動此項/translation>
     </message>
     <message>
         <source>Record and Upload Road Cameras</source>
