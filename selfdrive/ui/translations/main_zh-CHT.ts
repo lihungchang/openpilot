@@ -1409,6 +1409,10 @@ This may take up to a minute.</source>
         <translation>檢查</translation>
     </message>
     <message>
+        <source>checking...</source>
+        <translation>檢查中...</translation>
+    </message>
+    <message>
         <source>Uninstall</source>
         <translation>解除安裝</translation>
     </message>
@@ -1457,13 +1461,6 @@ This may take up to a minute.</source>
         <translation>查看openpilot崩潰時的紀錄</translation>
     </message>
 </context>
-<context>
-    <name>DrivingPanel</name>
-    <message>
-        <source>Always on Lateral</source>
-        <translation>全時置中</translation>
-    </message> 
-</context>    
 <context>
     <name>SshControl</name>
     <message>
