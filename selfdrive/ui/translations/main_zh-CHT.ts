@@ -1189,7 +1189,7 @@ This may take up to a minute.</source>
     </message>
     <message>
         <source>for Custom Software</source>
-        <translation>訂製的軟體</translation>
+        <translation>客製化的軟體</translation>
     </message>
     <message>
         <source>Downloading...</source>
@@ -1714,7 +1714,7 @@ This may take up to a minute.</source>
     </message>
     <message>
         <source>Enable if your is a manual.</source>
-        <translation>手排車請啟動此項/translation>
+        <translation>手排車請啟動此項</translation>
     </message>
     <message>
         <source>Record and Upload Road Cameras</source>
