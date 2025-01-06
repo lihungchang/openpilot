@@ -1134,7 +1134,7 @@ This may take up to a minute.</source>
     </message>
     <message>
         <source>Visuals</source>
-        <translation>視覺</translation>
+        <translation>介面設定</translation>
     </message>
     <message>
         <source>Controls</source>
