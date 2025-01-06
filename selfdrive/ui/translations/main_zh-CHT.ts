@@ -139,43 +139,43 @@
     </message>
     <message>
         <source>m/s²</source>
-        <translation type="unfinished"></translation>
+        <translation>m/s²</translation>
     </message>
     <message>
         <source>m/s</source>
-        <translation type="unfinished"></translation>
+        <translation>m/s</translation>
     </message>
     <message>
         <source>kph</source>
-        <translation type="unfinished"></translation>
+        <translation>kph</translation>
     </message>
     <message>
         <source> ft/s²</source>
-        <translation type="unfinished"></translation>
+        <translation> ft/s²</translation>
     </message>
     <message>
         <source>Accel: %1%2</source>
-        <translation type="unfinished"></translation>
+        <translation>加速器: %1%2</translation>
     </message>
     <message>
         <source> - Max: %1%2</source>
-        <translation type="unfinished"></translation>
+        <translation> - 最大: %1%2</translation>
     </message>
     <message>
         <source> | Obstacle: </source>
-        <translation type="unfinished"></translation>
+        <translation> | 障礙物: </translation>
     </message>
     <message>
         <source>  |  Obstacle Factor: </source>
-        <translation type="unfinished"></translation>
+        <translation> | 障礙因素: </translation>
     </message>
     <message>
         <source> - Stop: </source>
-        <translation type="unfinished"></translation>
+        <translation> - 停止: </translation>
     </message>
     <message>
         <source>  -  Stop Factor: </source>
-        <translation type="unfinished"></translation>
+        <translation> - 停止因素: </translation>
     </message>
     <message>
         <source>Follow: </source>
@@ -183,7 +183,7 @@
     </message>
     <message>
         <source>Follow Distance: </source>
-        <translation type="unfinished"></translation>
+        <translation>跟隨距離: </translation>
     </message>
     <message>
         <source>Confirm speed limit
@@ -225,7 +225,7 @@
     </message>
     <message>
         <source> / lane change</source>
-        <translation>變換車道</translation>
+        <translation> / 變換車道</translation>
     </message>
     <message>
         <source>Experimental Mode activated for intersection</source>
@@ -269,7 +269,7 @@
     </message>
     <message>
         <source>. Press the &quot;Cruise Control&quot; button to disable</source>
-        <translation>，︁關閉ACC功能即可關閉全時置中</translation>
+        <translation> ，︁關閉ACC功能即可關閉全時置中</translation>
     </message>
     <message>
         <source>. Long press the &quot;distance&quot; button to revert</source>
@@ -345,7 +345,7 @@
     </message>
     <message>
         <source>N/A</source>
-        <translation>無法使用</translation>
+        <translation>不存在</translation>
     </message>
     <message>
         <source>Serial</source>
@@ -1659,6 +1659,14 @@ This may take up to a minute.</source>
     <message>
         <source>Enable driver monitoring even when openpilot is not engaged.</source>
         <translation type="vanished">即使在openpilot未啟動時也啟用駕駛監控。</translation>
+    </message>
+    <message>
+        <source>Blended Acc (Experimental)</source>
+        <translation>混合式 ACC(實驗性)</translation>
+    </message>
+    <message>
+        <source>Blend stock MRCC and Experimental Mode longitudinal control.</source>
+        <translation>混合MRCC和實驗性縱向的跟車功能</translation>
     </message>
     <message>
         <source>Torque Interceptor Installed</source>
