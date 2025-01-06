@@ -1458,6 +1458,13 @@ This may take up to a minute.</source>
     </message>
 </context>
 <context>
+    <name>DrivingPanel</name>
+    <message>
+        <source>AlwaysOnLateral</source>
+        <translation>全時置中</translation>
+    </message> 
+</context>    
+<context>
     <name>SshControl</name>
     <message>
         <source>SSH Keys</source>
@@ -1665,7 +1672,7 @@ This may take up to a minute.</source>
         <translation>縱向自動調整(測試)</translation>
     </message>
     <message>
-        <source>Enable the longitudinal auto-tuning feature. Slowly adjusts the acceleration gain to minimize error.</source>
+        <source>Enable the longitudinal auto-tuning feature. Slowly adjusts the acceleration gain to minimize error</source>
         <translation>啟用縱向自動調整功能。緩慢調整加速度增益以最小化誤差。</translation>
     </message>
     <message>
@@ -1714,7 +1721,7 @@ This may take up to a minute.</source>
     </message>
     <message>
         <source>Enable if your is a manual.</source>
-        <translation>手排車請啟動此項</translation>
+        <translation>手排車請選取此項</translation>
     </message>
     <message>
         <source>Record and Upload Road Cameras</source>
