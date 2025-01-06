@@ -1409,10 +1409,6 @@ This may take up to a minute.</source>
         <translation>檢查</translation>
     </message>
     <message>
-        <source>checking...</source>
-        <translation>檢查中...</translation>
-    </message>
-    <message>
         <source>Uninstall</source>
         <translation>解除安裝</translation>
     </message>
