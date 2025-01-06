@@ -291,6 +291,31 @@ DevicePanel::DevicePanel(SettingsWindow *parent) : ListWidget(parent) {
     if (ConfirmationDialog::confirm(tr("Are you sure you want to reset calibration?"), tr("Reset"), this)) {
       params.remove("CalibrationParams");
       params.remove("LiveTorqueParameters");
+
+      //20250106add for test
+      params.remove("CertifiedHerbalistCalibrationParams");
+      paramsStorage.remove("CertifiedHerbalistCalibrationParams");
+      params.remove("ClairvoyantDriverCalibrationParams");
+      paramsStorage.remove("ClairvoyantDriverCalibrationParams");
+      params.remove("DuckAmigoCalibrationParams");
+      paramsStorage.remove("DuckAmigoCalibrationParams");
+      params.remove("LosAngelesCalibrationParams");
+      paramsStorage.remove("LosAngelesCalibrationParams");
+      params.remove("NorthDakotaCalibrationParams");
+      paramsStorage.remove("NorthDakotaCalibrationParams");
+      params.remove("NorthDakotaV2CalibrationParams");
+      paramsStorage.remove("NorthDakotaV2CalibrationParams");
+      params.remove("NotreDameCalibrationParams");
+      paramsStorage.remove("NotreDameCalibrationParams");
+      params.remove("RadicalTurtleCalibrationParams");
+      paramsStorage.remove("RadicalTurtleCalibrationParams");
+      params.remove("RecertifiedHerbalistCalibrationParams");
+      paramsStorage.remove("RecertifiedHerbalistCalibrationParams");
+      params.remove("SecretGoodOpenpilotCalibrationParams");
+      paramsStorage.remove("SecretGoodOpenpilotCalibrationParams");
+      params.remove("WD40CalibrationParams");
+      paramsStorage.remove("WD40CalibrationParams");
+
     }
   });
   addItem(resetCalibBtn);
