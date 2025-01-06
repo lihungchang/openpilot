@@ -1460,7 +1460,7 @@ This may take up to a minute.</source>
 <context>
     <name>DrivingPanel</name>
     <message>
-        <source>AlwaysOnLateral</source>
+        <source>Always on Lateral</source>
         <translation>全時置中</translation>
     </message> 
 </context>    
