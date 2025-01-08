@@ -291,19 +291,7 @@ DevicePanel::DevicePanel(SettingsWindow *parent) : ListWidget(parent) {
     if (ConfirmationDialog::confirm(tr("Are you sure you want to reset calibration?"), tr("Reset"), this)) {
       params.remove("CalibrationParams");
       params.remove("LiveTorqueParameters");
-
-      //20250106add for test
-      params.remove("CertifiedHerbalistCalibrationParams");
-      params.remove("ClairvoyantDriverCalibrationParams");
-      params.remove("DuckAmigoCalibrationParams");
-      params.remove("LosAngelesCalibrationParams");
-      params.remove("NorthDakotaCalibrationParams");
-      params.remove("NorthDakotaV2CalibrationParams");
-      params.remove("NotreDameCalibrationParams");
-      params.remove("RadicalTurtleCalibrationParams");
-      params.remove("RecertifiedHerbalistCalibrationParams");
-      params.remove("SecretGoodOpenpilotCalibrationParams");
-      params.remove("WD40CalibrationParams");      
+   
     }
   });
   addItem(resetCalibBtn);
