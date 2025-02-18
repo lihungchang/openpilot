@@ -147,10 +147,11 @@ class CarState(CarStateBase):
     self.crz_btns_counter = cp.vl["CRZ_BTNS"]["CTR"]
 
     # camera signals
-    self.lkas_disabled = cp_cam.vl["CAM_LANEINFO"]["LANE_LINES"] == 0 if not self.CP.flags & MazdaFlags.TORQUE_INTERCEPTOR else False
-    self.cam_lkas = cp_cam.vl["CAM_LKAS"]
-    self.cam_laneinfo = cp_cam.vl["CAM_LANEINFO"]
-    ret.steerFaultPermanent = cp_cam.vl["CAM_LKAS"]["ERR_BIT_1"] == 1 if not self.CP.flags & MazdaFlags.TORQUE_INTERCEPTOR else False
+    if not self.CP.flags & MazdaFlags.NO_FSC:
+      self.lkas_disabled = cp_cam.vl["CAM_LANEINFO"]["LANE_LINES"] == 0 if not self.CP.flags & MazdaFlags.TORQUE_INTERCEPTOR else False
+      self.cam_lkas = cp_cam.vl["CAM_LKAS"]
+      self.cam_laneinfo = cp_cam.vl["CAM_LANEINFO"]
+      ret.steerFaultPermanent = cp_cam.vl["CAM_LKAS"]["ERR_BIT_1"] == 1 if not self.CP.flags & MazdaFlags.TORQUE_INTERCEPTOR else False
     self.cp_cam = cp_cam
     self.cp = cp
 
@@ -281,11 +282,12 @@ class CarState(CarStateBase):
     messages = []
 
     if CP.flags & MazdaFlags.GEN1:
-      messages += [
-        #  address, frequency
-        ("CAM_LANEINFO", 2),
-        ("CAM_LKAS", 16),
-      ]
+      if not CP.flags & MazdaFlags.NO_FSC:
+        messages += [
+          #  address, frequency
+          ("CAM_LANEINFO", 2),
+          ("CAM_LKAS", 16),
+        ]
 
       if CP.flags & MazdaFlags.RADAR_INTERCEPTOR:
         messages += [

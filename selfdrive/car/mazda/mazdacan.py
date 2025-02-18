@@ -4,48 +4,47 @@ from openpilot.common.numpy_fast import clip
 def create_steering_control(packer, CP, frame, apply_steer, lkas):
   msgs = []
   if CP.flags & MazdaFlags.GEN1:
-    tmp = apply_steer + 2048
+    if not CP.flags & MazdaFlags.NO_FSC:
+      tmp = apply_steer + 2048
 
-    lo = tmp & 0xFF
-    hi = tmp >> 8
+      lo = tmp & 0xFF
+      hi = tmp >> 8
 
-    # copy values from camera
-    b1 = int(lkas["BIT_1"])
-    er1 = int(lkas["ERR_BIT_1"])
-    lnv = 0
-    ldw = 0
-    er2 = int(lkas["ERR_BIT_2"])
+      # copy values from camera
+      b1 = int(lkas["BIT_1"])
+      er1 = int(lkas["ERR_BIT_1"])
+      lnv = 0
+      ldw = 0
+      er2 = int(lkas["ERR_BIT_2"])
 
-    # Some older models do have these, newer models don't.
-    # Either way, they all work just fine if set to zero.
-    steering_angle = 0
-    b2 = 0
+      # Some older models do have these, newer models don't.
+      # Either way, they all work just fine if set to zero.
+      steering_angle = 0
+      b2 = 0
 
-    tmp = steering_angle + 2048
-    ahi = tmp >> 10
-    amd = (tmp & 0x3FF) >> 2
-    amd = (amd >> 4) | (( amd & 0xF) << 4)
-    alo = (tmp & 0x3) << 2
+      tmp = steering_angle + 2048
+      ahi = tmp >> 10
+      amd = (tmp & 0x3FF) >> 2
+      amd = (amd >> 4) | (( amd & 0xF) << 4)
+      alo = (tmp & 0x3) << 2
 
-    ctr = frame % 16
-    # bytes:     [    1  ] [ 2 ] [             3               ]  [           4         ]
-    csum = 249 - ctr - hi - lo - (lnv << 3) - er1 - (ldw << 7) - ( er2 << 4) - (b1 << 5)
+      ctr = frame % 16
+      # bytes:     [    1  ] [ 2 ] [             3               ]  [           4         ]
+      csum = 249 - ctr - hi - lo - (lnv << 3) - er1 - (ldw << 7) - ( er2 << 4) - (b1 << 5)
 
-    # bytes      [ 5 ] [ 6 ] [    7   ]
-    csum = csum - ahi - amd - alo - b2
+      # bytes      [ 5 ] [ 6 ] [    7   ]
+      csum = csum - ahi - amd - alo - b2
 
-    if ahi == 1:
-      csum = csum + 15
+      if ahi == 1:
+        csum = csum + 15
 
-    if csum < 0:
-      if csum < -256:
-        csum = csum + 512
-      else:
-        csum = csum + 256
+      if csum < 0:
+        if csum < -256:
+          csum = csum + 512
+        else:
+          csum = csum + 256
 
-    csum = csum % 256
-    values = {}
-    if CP.flags & MazdaFlags.GEN1:
+      csum = csum % 256
       values = {
         "LKAS_REQUEST": apply_steer,
         "CTR": ctr,
@@ -60,13 +59,13 @@ def create_steering_control(packer, CP, frame, apply_steer, lkas):
       }
       msgs.append(packer.make_can_msg("CAM_LKAS", 0, values))
 
-      if CP.flags & MazdaFlags.TORQUE_INTERCEPTOR:
-        values = {
-            "LKAS_REQUEST"     : apply_steer,
-            "CHKSUM"           : apply_steer,
-            "KEY"              : 3294744160
-        }
-        msgs.append(packer.make_can_msg("CAM_LKAS2", 1, values))
+    if CP.flags & MazdaFlags.TORQUE_INTERCEPTOR:
+      values = {
+          "LKAS_REQUEST"     : apply_steer,
+          "CHKSUM"           : apply_steer,
+          "KEY"              : 3294744160
+      }
+      msgs.append(packer.make_can_msg("CAM_LKAS2", 1, values))
 
   elif CP.flags & MazdaFlags.GEN2:
     bus = 1
